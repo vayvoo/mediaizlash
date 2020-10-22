@@ -23,9 +23,10 @@ COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Messages
 START_MSG = """
-**Hi, I'm Media Search bot**
+**Assalomu alaykum, Men siz uchun o'zbek tilidagi filmlarni izlab topaman**
 
-Here you can search files in inline mode. Just press following buttons and start searching.
+Qidiruvni boshlash uchun quyidagi tugmachani bosing.
+@ovoza
 """
 
-SHARE_BUTTON_TEXT = 'Checkout {username} for searching files'
+SHARE_BUTTON_TEXT = 'Filmlarni qidirish uchun {username} botiga tashrif buyuring'
