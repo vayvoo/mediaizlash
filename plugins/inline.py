@@ -36,7 +36,7 @@ async def answer(bot, query):
 
     if results:
         count = len(results)
-        switch_pm_text = f"{emoji.FILE_FOLDER} {count} Result{'s' if count > 1 else ''}"
+        switch_pm_text = f"{emoji.FILE_FOLDER} {count} Natija{'lar' if count > 1 else ''}"
         if string:
             switch_pm_text += f" for {string}"
 
@@ -47,7 +47,7 @@ async def answer(bot, query):
                            next_offset=str(next_offset))
     else:
 
-        switch_pm_text = f'{emoji.CROSS_MARK} No results'
+        switch_pm_text = f'{emoji.CROSS_MARK} Hech nima topilmadi'
         if string:
             switch_pm_text += f' for "{string}"'
 
@@ -59,9 +59,9 @@ async def answer(bot, query):
 
 def get_reply_markup(username):
     buttons = [[
-        InlineKeyboardButton('Search again', switch_inline_query_current_chat=''),
+        InlineKeyboardButton('Yana izlash', switch_inline_query_current_chat=''),
         InlineKeyboardButton(
-            text='Share bot',
+            text='Ulashish',
             url='t.me/share/url?url='+ quote(SHARE_BUTTON_TEXT.format(username=username))),
     ]]
     return InlineKeyboardMarkup(buttons)
