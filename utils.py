@@ -46,9 +46,9 @@ async def save_file(media):
     try:
         await file.commit()
     except DuplicateKeyError:
-        logger.warning(media.file_name + " is already saved in database")
+        logger.warning(media.file_name + " filmlar omboriga saqlangan")
     else:
-        logger.info(media.file_name + " is saved in database")
+        logger.info(media.file_name + " filmlar omboriga saqland")
 
 
 async def get_search_results(query, file_type=None, max_results=10, offset=0):
