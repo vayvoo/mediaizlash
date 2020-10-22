@@ -12,8 +12,8 @@ logger = logging.getLogger(__name__)
 async def start(bot, message):
     """Start command handler"""
     buttons = [[
-        InlineKeyboardButton('Search Here', switch_inline_query_current_chat=''),
-        InlineKeyboardButton('Go Inline', switch_inline_query=''),
+        InlineKeyboardButton('Izlash', switch_inline_query_current_chat=''),
+        InlineKeyboardButton('Shu yerda izlash', switch_inline_query=''),
     ]]
     reply_markup = InlineKeyboardMarkup(buttons)
     await message.reply(START_MSG, reply_markup=reply_markup)
@@ -46,13 +46,13 @@ async def channel_info(bot, message):
 @Client.on_message(filters.command('total') & filters.user(ADMINS))
 async def total(bot, message):
     """Show total files in database"""
-    msg = await message.reply("Processing...⏳", quote=True)
+    msg = await message.reply("ishlanmoqda...⏳", quote=True)
     try:
         total = await Media.count_documents()
-        await msg.edit(f'📁 Saved files: {total}')
+        await msg.edit(f'📁 Saqlangan fayllar: {total}')
     except Exception as e:
-        logger.exception('Failed to check total files')
-        await msg.edit(f'Error: {e}')
+        logger.exception('Fayllarni izlashda xatolik')
+        await msg.edit(f'Xato: {e}')
 
 
 @Client.on_message(filters.command('logger') & filters.user(ADMINS))
@@ -72,7 +72,7 @@ async def delete(bot, message):
     if reply and reply.media:
         msg = await message.reply("Processing...⏳", quote=True)
     else:
-        await message.reply('Reply to file with /delete which you want to delete', quote=True)
+        await message.reply('Ombordan ochirilishi kerak bolgan faylga javob qilib /delete buyrugini bering', quote=True)
         return
 
     for file_type in ("document", "video", "audio"):
@@ -80,7 +80,7 @@ async def delete(bot, message):
         if media is not None:
             break
     else:
-        await msg.edit('This is not supported file format')
+        await msg.edit('Bu faylni qollab quvvatlanmaydi')
         return
 
     collection = db[COLLECTION_NAME]
@@ -91,6 +91,6 @@ async def delete(bot, message):
         'caption': reply.caption
     })
     if result.deleted_count:
-        await msg.edit('File is successfully deleted from database')
+        await msg.edit('Filmlar omboridan ochirildi')
     else:
-        await msg.edit('File not found in database')
+        await msg.edit('Bu film topilmadi')
