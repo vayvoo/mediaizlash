@@ -9,7 +9,7 @@ API_HASH = environ['API_HASH']
 BOT_TOKEN = environ['BOT_TOKEN']
 
 # Bot settings
-MAX_RESULTS = int(environ.get('MAX_RESULTS', 10))
+MAX_RESULTS = 10
 CACHE_TIME = int(environ.get('CACHE_TIME', 300))
 
 # Admins & Channels
